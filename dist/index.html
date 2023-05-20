@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+  <script src="https://kit.fontawesome.com/df5ef303a0.js" crossorigin="anonymous"></script>
+  <link href="/dist/style.css" rel="stylesheet">
+  <script src="/dist/js.js" defer></script>
+</head>
+<body class="h-full hidden">
+  <main class="h-full bg-radial from-dark-b-100 via-dark-b-200 to-dark-b-200 flex flex-col items-center">
+    <div class="flex justify-between items-center border-2 rounded-lg border-gray-outline p-4 mt-8 w-11/12 sm:w-40">
+      <img src="/images/logo.svg" alt="logo" class="w-24 sm:h-28">
+      <span class="bg-white px-4 py-2 sm:py-4 sm:px-9 rounded flex flex-col text-center justify-center">
+        <span class="text-score tracking-widest">SCORE</span>
+        <span id="score" class="text-dark text-4xl sm:text-6xl font-bold">0</span>
+      </span>
+    </div>
+  
+    <div class="mt-20 w-64 h-64 sm:w-35 sm:h-30 flex justify-center items-center relative step" id="step1">
+      <div id="paper" class="play w-28 h-28 sm:w-10 sm:h-10 rounded-full flex justify-center items-center bg-gradient-to-b from-paper-c1 to-paper-c2 shadow-inset1 cursor-pointer absolute top-0 left-0 sm:top-10 sm:left-10">
+        <div class="bg-white w-20 h-20 sm:w-28 sm:h-28 rounded-full flex justify-center items-center shadow-inset2">
+          <img src="/images/icon-paper.svg" alt="paper" class="w-11 h-11 sm:w-14 sm:h-14 rounded-full">
+        </div>
+      </div>
+      <div id="Scissors" class="play w-28 h-28 sm:w-10 sm:h-10 rounded-full flex justify-center items-center bg-gradient-to-b from-Scissor-c1 to-Scissor-c2 shadow-inset1 cursor-pointer absolute top-0 right-0 sm:top-10 sm:right-10">
+        <div class="bg-white w-20 h-20 sm:w-28 sm:h-28 rounded-full flex justify-center items-center shadow-inset2">
+          <img src="/images/icon-scissors.svg" alt="paper" class="w-11 h-11 sm:w-14 sm:h-14 rounded-full">
+        </div>
+      </div>
+      <div id="rock" class="play w-28 h-28 sm:w-10 sm:h-10 rounded-full flex justify-center items-center bg-gradient-to-b from-rock-c1 to-rock-c2 shadow-inset1 cursor-pointer absolute bottom-0  sm:bottom-10 sm:left-46">
+        <div class="bg-white w-20 h-20 sm:w-28 sm:h-28 rounded-full flex justify-center items-center shadow-inset2">
+          <img src="/images/icon-rock.svg" alt="paper" class="w-11 h-11 sm:w-14 sm:h-14 rounded-full">
+        </div>
+      </div>
+      <img src="/images/bg-triangle.svg" aria-hidden="true" class="w-44 sm:w-64">
+    </div>
+  
+    <div class="mt-20 w-64 h-64 sm:w-35 sm:h-30 flex justify-center gap-10 sm:gap-20 step" id="step2">
+    <div class="flex flex-col items-center gap-10">
+      <div class="youPicked">
+      </div>
+      <span class="text-white text-xs sm:text-xl font-bold tracking-widest sm:order-first">YOU PICKED</span>
+    </div>
+  
+    <div class="flex flex-col items-center gap-10">
+      <div class="theyPicked w-28 h-28 sm:w-10 sm:h-10 rounded-full flex justify-center items-center bg-[rgba(0,0,0,0.3)]">
+      </div>
+      <span class="text-white text-xs sm:text-xl font-bold tracking-widest sm:order-first">THE HOUSE PICKED</span>
+    </div>
+    </div>
+  
+    <div class="mt-20 w-64 h-64 sm:w-40 grid grid-cols-2 sm:grid-cols-3 justify-items-center justify-center items-center gap-10 sm:gap-28 step" id="step3">
+      <div class="flex flex-col items-center gap-10">
+        <div class="youPicked">
+        </div>
+        <span class="text-white text-xs sm:text-sm font-bold tracking-widest sm:order-first">YOU PICKED</span>
+      </div>
+    
+      <div class="flex flex-col items-center gap-10 w-auto sm:order-last">
+        <div class="theyPicked">
+        </div>
+        <span class="text-white text-xs sm:text-sm font-bold tracking-widest sm:order-first">THE HOUSE PICKED</span>
+      </div>
+  
+      <div class="grid max:col-span-0 justify-self-center text-center justify-center gap-4">
+        <span class="result text-white text-3xl font-bold tracking-widest">YOU WIN</span>
+        <button type="button" onclick="playAgain()" class="bg-white text-gray-outline hover:text-red-500 tracking-widest w-10 h-12 rounded-lg">PLAY AGAIN</button>
+      </div>
+  
+      </div>
+  
+    <button type="button" onclick="openRules()" class="border-gray-outline py-2 px-8 border-2 rounded-lg text-white tracking-widest fixed bottom-10 sm:right-8">RULES</button>
+  <div id="rules" class="absolute w-full h-full flex justify-center items-center bg-white sm:bg-black-50 z-10">
+    <div class="sm:bg-white w-full h-full sm:w-25 sm:h-25 px-10 py-20 rounded-lg flex flex-col justify-between items-center relative">
+        <span class="text-dark font-bold text-2xl sm:absolute top-10 left-10">RULES</span>
+        <img src="/images/image-rules.svg" alt="rules" class="sm:mt-6">
+        <button type="button" onclick="closeRules()" class="text-gray-500 text-xl sm:absolute top-10 right-10"><i class="fas fa-xmark"></i></button>
+    </div>
+  </div>
+  
+  <div class="flex justify-center max:hidden text-white absolute bottom-1">
+    <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" class="text-gray-500">Frontend Mentor</a>.</p>
+    &nbsp;
+    <p> Coded by <a href="https://github.com/fahmisboui/" class="text-gray-500"> Fahmi Sboui</a>.</p>
+  </div>
+  </main>
+</body>
+</html>
